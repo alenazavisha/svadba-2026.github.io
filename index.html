@@ -69,6 +69,62 @@
             60% {transform: translateY(-5px);}
         }
         
+        /* Стили для баннера с приглашением */
+        .invitation-banner {
+            background: rgba(255, 250, 240, 0.95);
+            padding: 30px;
+            margin: 40px auto 20px auto;
+            border-radius: 15px;
+            max-width: 800px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            border: 2px solid #f0e6e6;
+            text-align: center;
+        }
+
+        .music-note {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .music-text {
+            font-size: 0.9em;
+            color: #888;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .invitation-content h2 {
+            color: #d4a5a5;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .invitation-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin: 15px 0;
+            color: #5a5a5a;
+        }
+
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #d4a5a5;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
         @media (max-width: 768px) {
             .names {
                 font-size: 2.5em;
@@ -77,11 +133,30 @@
             .date {
                 font-size: 1.4em;
             }
+            .invitation-banner {
+                margin: 20px auto;
+                padding: 20px;
+            }
+            .invitation-content h2 {
+                font-size: 1.5em;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Баннер с музыкой и приглашением -->
+    <div class="invitation-banner">
+        <div class="music-note">🎵</div>
+        <p class="music-text">Если музыка Вас отвлекает, ее можно отключить, нажав на кнопку</p>
+        
+        <div class="invitation-content">
+            <h2>ДОРОГИЕ РОДНЫЕ И БЛИЗКИЕ!</h2>
+            <p>Приглашаем Вас разделить с нами радость особенного для нас события и стать частью нашей семейной истории!</p>
+            <p>Совсем скоро состоится наша <strong>СВАДЬБА!</strong><br>И мы не представляем этот праздник без Вас, близких и дорогих нам людей.</p>
+        </div>
+    </div>
+
     <div class="container">
         <div class="names">Константин и Алёна</div>
         <div class="date">08.08.2026</div>
@@ -91,5 +166,28 @@
     <div class="footer">
         С любовью для наших гостей
     </div>
+
+    <!-- Автовоспроизведение музыки -->
+    <audio autoplay loop id="bgMusic" volume="0.5">
+        <source src="neyjnaya_lyubov.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Кнопка включения/выключения звука -->
+    <div class="music-toggle" onclick="toggleMusic()">🔊</div>
+
+    <script>
+        function toggleMusic() {
+            var audio = document.getElementById("bgMusic");
+            var button = document.querySelector('.music-toggle');
+            
+            if (audio.paused) {
+                audio.play();
+                button.innerHTML = "🔊";
+            } else {
+                audio.pause();
+                button.innerHTML = "🔇";
+            }
+        }
+    </script>
 </body>
 </html>
