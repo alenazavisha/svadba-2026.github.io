@@ -15,133 +15,14 @@
         
         body {
             font-family: 'Georama', sans-serif;
-            background: #f0ece3 url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
+            background: #f0ece3;
             color: #3c3c3c;
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-            overflow-x: hidden;
-        }
-        
-        /* Конверт бордовый с текстурой */
-        .envelope-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #f0ece3;
-            display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            transition: opacity 0.5s ease;
-        }
-        
-        .envelope {
-            width: 320px;
-            height: 220px;
-            background: #8B0000;
-            background-image: 
-                linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            position: relative;
-            cursor: pointer;
-            box-shadow: 
-                0 15px 35px rgba(0,0,0,0.3),
-                0 5px 15px rgba(0,0,0,0.2),
-                inset 0 1px 0 rgba(255,255,255,0.2);
-            border-radius: 2px;
-            transform: perspective(1000px) rotateX(5deg) rotateY(0deg);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .envelope:before {
-            content: '';
-            position: absolute;
-            top: -80px;
-            left: 0;
-            border-left: 160px solid transparent;
-            border-right: 160px solid transparent;
-            border-bottom: 80px solid #700000;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-        
-        /* Печать серая объемная */
-        .envelope-seal {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background: #808080;
-            border-radius: 50%;
-            box-shadow: 
-                0 5px 15px rgba(0,0,0,0.3),
-                inset 0 2px 0 rgba(255,255,255,0.2),
-                inset 0 -2px 0 rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .envelope-seal:before {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-        }
-        
-        .envelope-seal-text {
-            color: white;
-            font-size: 0.7em;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        }
-        
-        .envelope-instruction {
-            margin-top: 40px;
-            color: #8B0000;
-            font-size: 1.1em;
-            letter-spacing: 1px;
-            font-weight: 300;
-            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
-        }
-        
-        .envelope:hover {
-            transform: perspective(1000px) rotateX(5deg) rotateY(0deg) translateY(-5px);
-            box-shadow: 
-                0 20px 45px rgba(0,0,0,0.4),
-                0 8px 20px rgba(0,0,0,0.3),
-                inset 0 1px 0 rgba(255,255,255,0.2);
-        }
-        
-        .envelope-seal:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        /* Основной контент */
-        .main-content {
-            opacity: 0;
-            transition: opacity 1s ease;
-            width: 100%;
-            padding: 20px;
+            text-align: center;
+            padding: 40px 20px;
         }
         
         .container {
@@ -321,18 +202,6 @@
         }
         
         @media (max-width: 768px) {
-            .envelope {
-                width: 280px;
-                height: 190px;
-            }
-            
-            .envelope:before {
-                top: -70px;
-                border-left: 140px solid transparent;
-                border-right: 140px solid transparent;
-                border-bottom: 70px solid #700000;
-            }
-            
             .names {
                 font-size: 2.2em;
                 letter-spacing: 4px;
@@ -379,118 +248,88 @@
     </style>
 </head>
 <body>
-    <!-- Конверт с печатью -->
-    <div class="envelope-container" id="envelopeContainer">
-        <div class="envelope">
-            <div class="envelope-seal" onclick="openEnvelope()">
-                <div class="envelope-seal-text">Нажать</div>
-            </div>
-        </div>
-        <div class="envelope-instruction">Для просмотра нажмите на печать</div>
+    <div class="container">
+        <div class="names">Константин и Алёна</div>
+        <div class="date">08.08.2026</div>
+        <div class="scroll-prompt">Листайте вниз</div>
     </div>
 
-    <!-- Основной контент (скрыт до открытия конверта) -->
-    <div class="main-content" id="mainContent">
-        <div class="container">
-            <div class="names">Константин и Алёна</div>
-            <div class="date">08.08.2026</div>
-            <div class="scroll-prompt">Листайте вниз</div>
-        </div>
-
-        <!-- Баннер с приглашением -->
-        <div class="invitation-banner">
-            <div class="music-note">🎵</div>
-            <p class="music-text">Если музыка Вас отвлекает, ее можно отключить, нажав на кнопку</p>
-            
-            <div class="invitation-content">
-                <h2>ДОРОГИЕ РОДНЫЕ И БЛИЗКИЕ!</h2>
-                <p>Приглашаем Вас разделить с нами радость особенного для нас события и стать частью нашей семейной истории!</p>
-                <p>Совсем скоро состоится наша <strong>СВАДЬБА!</strong><br>И мы не представляем этот праздник без Вас, близких и дорогих нам людей.</p>
-            </div>
-        </div>
-
-        <!-- Календарь -->
-        <div class="calendar-section">
-            <div class="calendar-title">ДАТА</div>
-            <div class="calendar">
-                <div class="calendar-header">ПН ВТ СР ЧТ ПТ СБ ВС</div>
-                <div class="calendar-grid">
-                    <div class="calendar-day other-month">27</div>
-                    <div class="calendar-day other-month">28</div>
-                    <div class="calendar-day other-month">29</div>
-                    <div class="calendar-day other-month">30</div>
-                    <div class="calendar-day other-month">31</div>
-                    <div class="calendar-day">1</div>
-                    <div class="calendar-day">2</div>
-                    <div class="calendar-day">3</div>
-                    <div class="calendar-day">4</div>
-                    <div class="calendar-day">5</div>
-                    <div class="calendar-day">6</div>
-                    <div class="calendar-day">7</div>
-                    <div class="calendar-day wedding-day">8</div>
-                    <div class="calendar-day">9</div>
-                    <div class="calendar-day">10</div>
-                    <div class="calendar-day">11</div>
-                    <div class="calendar-day">12</div>
-                    <div class="calendar-day">13</div>
-                    <div class="calendar-day">14</div>
-                    <div class="calendar-day">15</div>
-                    <div class="calendar-day">16</div>
-                    <div class="calendar-day">17</div>
-                    <div class="calendar-day">18</div>
-                    <div class="calendar-day">19</div>
-                    <div class="calendar-day">20</div>
-                    <div class="calendar-day">21</div>
-                    <div class="calendar-day">22</div>
-                    <div class="calendar-day">23</div>
-                    <div class="calendar-day">24</div>
-                    <div class="calendar-day">25</div>
-                    <div class="calendar-day">26</div>
-                    <div class="calendar-day">27</div>
-                    <div class="calendar-day">28</div>
-                    <div class="calendar-day">29</div>
-                    <div class="calendar-day">30</div>
-                    <div class="calendar-day">31</div>
-                    <div class="calendar-day other-month">1</div>
-                    <div class="calendar-day other-month">2</div>
-                    <div class="calendar-day other-month">3</div>
-                </div>
-            </div>
-        </div>
+    <!-- Баннер с приглашением -->
+    <div class="invitation-banner">
+        <div class="music-note">🎵</div>
+        <p class="music-text">Если музыка Вас отвлекает, ее можно отключить, нажав на кнопку</p>
         
-        <div class="footer">
-            С любовью для наших гостей
+        <div class="invitation-content">
+            <h2>ДОРОГИЕ РОДНЫЕ И БЛИЗКИЕ!</h2>
+            <p>Приглашаем Вас разделить с нами радость особенного для нас события и стать частью нашей семейной истории!</p>
+            <p>Совсем скоро состоится наша <strong>СВАДЬБА!</strong><br>И мы не представляем этот праздник без Вас, близких и дорогих нам людей.</p>
         </div>
+    </div>
 
-        <!-- Кнопка включения/выключения звука -->
-        <button class="music-toggle" onclick="toggleMusic()">🔊</button>
+    <!-- Календарь -->
+    <div class="calendar-section">
+        <div class="calendar-title">ДАТА</div>
+        <div class="calendar">
+            <div class="calendar-header">ПН ВТ СР ЧТ ПТ СБ ВС</div>
+            <div class="calendar-grid">
+                <div class="calendar-day other-month">27</div>
+                <div class="calendar-day other-month">28</div>
+                <div class="calendar-day other-month">29</div>
+                <div class="calendar-day other-month">30</div>
+                <div class="calendar-day other-month">31</div>
+                <div class="calendar-day">1</div>
+                <div class="calendar-day">2</div>
+                <div class="calendar-day">3</div>
+                <div class="calendar-day">4</div>
+                <div class="calendar-day">5</div>
+                <div class="calendar-day">6</div>
+                <div class="calendar-day">7</div>
+                <div class="calendar-day wedding-day">8</div>
+                <div class="calendar-day">9</div>
+                <div class="calendar-day">10</div>
+                <div class="calendar-day">11</div>
+                <div class="calendar-day">12</div>
+                <div class="calendar-day">13</div>
+                <div class="calendar-day">14</div>
+                <div class="calendar-day">15</div>
+                <div class="calendar-day">16</div>
+                <div class="calendar-day">17</div>
+                <div class="calendar-day">18</div>
+                <div class="calendar-day">19</div>
+                <div class="calendar-day">20</div>
+                <div class="calendar-day">21</div>
+                <div class="calendar-day">22</div>
+                <div class="calendar-day">23</div>
+                <div class="calendar-day">24</div>
+                <div class="calendar-day">25</div>
+                <div class="calendar-day">26</div>
+                <div class="calendar-day">27</div>
+                <div class="calendar-day">28</div>
+                <div class="calendar-day">29</div>
+                <div class="calendar-day">30</div>
+                <div class="calendar-day">31</div>
+                <div class="calendar-day other-month">1</div>
+                <div class="calendar-day other-month">2</div>
+                <div class="calendar-day other-month">3</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        С любовью для наших гостей
     </div>
 
     <!-- Автовоспроизведение музыки -->
-    <audio loop id="bgMusic" volume="0.5">
+    <audio autoplay loop id="bgMusic" volume="0.5">
         <source src="music.mp3" type="audio/mpeg">
     </audio>
+    
+    <!-- Кнопка включения/выключения звука -->
+    <button class="music-toggle" onclick="toggleMusic()">🔊</button>
 
     <script>
-        function openEnvelope() {
-            // Скрываем конверт
-            document.getElementById('envelopeContainer').style.opacity = '0';
-            
-            // Показываем основной контент
-            setTimeout(function() {
-                document.getElementById('envelopeContainer').classList.add('hidden');
-                document.getElementById('mainContent').style.opacity = '1';
-                
-                // Включаем музыку
-                var audio = document.getElementById('bgMusic');
-                audio.play().catch(function() {
-                    console.log('Автовоспроизведение заблокировано');
-                });
-            }, 500);
-        }
-        
         function toggleMusic() {
-            var audio = document.getElementById('bgMusic');
+            var audio = document.getElementById("bgMusic");
             var button = document.querySelector('.music-toggle');
             
             if (audio.paused) {
@@ -502,8 +341,13 @@
             }
         }
         
-        // Прячем скролл до открытия конверта
-        document.body.style.overflow = 'hidden';
+        // Пытаемся включить музыку автоматически
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById("bgMusic");
+            audio.play().catch(function() {
+                console.log('Автовоспроизведение заблокировано');
+            });
+        });
     </script>
 </body>
 </html>
