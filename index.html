@@ -1,73 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <title>Свадьба Константина и Алёны</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Константин и Алёна | 08.08.2026</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
+            background: #f8f6f2;
+            color: #5a5a5a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 50px 20px;
-            background: #fffaf0;
-            color: #333;
-            line-height: 1.6;
+            padding: 20px;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
         }
-        h1 {
-            color: #d46a6a;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
         }
+        
+        .names {
+            font-size: 3.5em;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            color: #d4a5a5;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        
         .date {
             font-size: 1.8em;
-            font-weight: bold;
-            color: #d46a6a;
-            margin: 20px 0;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
+            color: #888;
         }
-        .info {
-            margin: 15px 0;
-            font-size: 1.2em;
+        
+        .scroll-prompt {
+            font-size: 1em;
+            letter-spacing: 2px;
+            color: #aaa;
+            margin-top: 100px;
+            animation: bounce 2s infinite;
         }
-        .location {
-            font-style: italic;
-            margin-bottom: 30px;
+        
+        .footer {
+            margin-top: 150px;
+            font-size: 0.8em;
+            color: #ccc;
+            letter-spacing: 1px;
         }
-        .section {
-            background: white;
-            padding: 20px;
-            margin: 20px auto;
-            border-radius: 10px;
-            max-width: 600px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        
+        @media (max-width: 768px) {
+            .names {
+                font-size: 2.5em;
+                letter-spacing: 4px;
+            }
+            .date {
+                font-size: 1.4em;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="section">
-        <h1>Константин и Алёна</h1>
-        <div class="date">8 Августа 2026</div>
-        <div class="location">Волгодонск</div>
+    <div class="container">
+        <div class="names">Константин и Алёна</div>
+        <div class="date">08.08.2026</div>
+        <div class="scroll-prompt">Листайте вниз</div>
     </div>
-
-    <div class="section">
-        <div class="info">Наше знакомство было предрешено свыше. Не иначе как сама судьба привела нас друг к другу в тот день в парке. Тихие аллеи, шепот листвы и внезапная встреча, которая навсегда изменила две жизни.</div>
-    </div>
-
-    <div class="section">
-        <div class="info">Торжественная роспись: 15:00</div>
-        <div class="info">ЗАГС г. Волгодонск, ул. Ленина, д. 94</div>
-        <div class="info">Мы будем счастливы, если вы разделите с нами самый важный момент нашего дня.</div>
-    </div>
-
-    <div class="section">
-        <div class="info">Банкет: 18:00</div>
-        <div class="info">Ресторан «Старая мельница»</div>
-        <div class="info">г. Волгодонск, пер. Пушкина, 1</div>
-        <div class="info">После церемонии приглашаем вас на праздничный ужин</div>
-    </div>
-
-    <div class="section">
-        <div class="info">Пожалуйста, ответьте до 1 августа 2026 года</div>
+    
+    <div class="footer">
+        С любовью для наших гостей
     </div>
 </body>
 </html>
