@@ -63,12 +63,6 @@
             letter-spacing: 1px;
         }
         
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-        
         /* Стили для баннера с приглашением */
         .invitation-banner {
             background: rgba(255, 250, 240, 0.95);
@@ -125,6 +119,12 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        
         @media (max-width: 768px) {
             .names {
                 font-size: 2.5em;
@@ -145,6 +145,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="container">
+        <div class="names">Константин и Алёна</div>
+        <div class="date">08.08.2026</div>
+        <div class="scroll-prompt">Листайте вниз</div>
+    </div>
+
     <!-- Баннер с музыкой и приглашением -->
     <div class="invitation-banner">
         <div class="music-note">🎵</div>
@@ -155,12 +161,6 @@
             <p>Приглашаем Вас разделить с нами радость особенного для нас события и стать частью нашей семейной истории!</p>
             <p>Совсем скоро состоится наша <strong>СВАДЬБА!</strong><br>И мы не представляем этот праздник без Вас, близких и дорогих нам людей.</p>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="names">Константин и Алёна</div>
-        <div class="date">08.08.2026</div>
-        <div class="scroll-prompt">Листайте вниз</div>
     </div>
     
     <div class="footer">
