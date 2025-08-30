@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Константин и Алёна | 08.08.2026</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Georama:wght@300;400;500;600&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,27 +14,26 @@
         }
         
         body {
-            font-family: 'Cormorant Garamond', serif;
-            background: #f5f1e8;
+            font-family: 'Georama', sans-serif;
+            background: #f0ece3 url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
             color: #3c3c3c;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 20px;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         
-        /* Стили для конверта */
+        /* Конверт бордовый с текстурой */
         .envelope-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #f5f1e8;
+            background: #f0ece3;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -42,56 +43,93 @@
         }
         
         .envelope {
-            width: 280px;
-            height: 180px;
-            background: #d4a5a5;
+            width: 320px;
+            height: 220px;
+            background: #8B0000;
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
             position: relative;
             cursor: pointer;
-            transition: transform 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.3),
+                0 5px 15px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            border-radius: 2px;
+            transform: perspective(1000px) rotateX(5deg) rotateY(0deg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .envelope:before {
             content: '';
             position: absolute;
-            top: -60px;
+            top: -80px;
             left: 0;
-            border-left: 140px solid transparent;
-            border-right: 140px solid transparent;
-            border-bottom: 60px solid #c49595;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-bottom: 80px solid #700000;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
         
-        .envelope:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
-        }
-        
-        .envelope-text {
+        /* Печать серая объемная */
+        .envelope-seal {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: #808080;
+            border-radius: 50%;
+            box-shadow: 
+                0 5px 15px rgba(0,0,0,0.3),
+                inset 0 2px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .envelope-seal:before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+        
+        .envelope-seal-text {
             color: white;
-            font-size: 1.2em;
-            letter-spacing: 3px;
+            font-size: 0.7em;
+            font-weight: 500;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            font-weight: 300;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         
         .envelope-instruction {
-            margin-top: 30px;
-            color: #8c7b6b;
+            margin-top: 40px;
+            color: #8B0000;
             font-size: 1.1em;
             letter-spacing: 1px;
+            font-weight: 300;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
         }
         
         .envelope:hover {
-            transform: scale(1.05);
+            transform: perspective(1000px) rotateX(5deg) rotateY(0deg) translateY(-5px);
+            box-shadow: 
+                0 20px 45px rgba(0,0,0,0.4),
+                0 8px 20px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .envelope-seal:hover {
+            transform: translate(-50%, -50%) scale(1.1);
         }
         
         .hidden {
@@ -103,6 +141,7 @@
             opacity: 0;
             transition: opacity 1s ease;
             width: 100%;
+            padding: 20px;
         }
         
         .container {
@@ -136,7 +175,7 @@
             animation: bounce 2s infinite;
         }
         
-        /* Остальные стили остаются без изменений */
+        /* Баннер с приглашением */
         .invitation-banner {
             background: rgba(250, 248, 242, 0.95);
             padding: 40px 30px;
@@ -148,6 +187,100 @@
             text-align: center;
         }
 
+        .music-note {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #8c7b6b;
+        }
+
+        .music-text {
+            font-size: 0.85em;
+            color: #8c7b6b;
+            margin-bottom: 30px;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        .invitation-content h2 {
+            color: #2b2b2b;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            letter-spacing: 1.5px;
+            font-weight: 400;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        .invitation-content p {
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin: 20px 0;
+            color: #4a4a4a;
+            font-weight: 300;
+        }
+
+        .invitation-content strong {
+            font-weight: 500;
+            color: #2b2b2b;
+        }
+
+        /* Календарь */
+        .calendar-section {
+            margin: 60px auto;
+            max-width: 800px;
+        }
+
+        .calendar-title {
+            font-family: 'Georama', sans-serif;
+            font-size: 1.8em;
+            color: #2b2b2b;
+            margin-bottom: 30px;
+            letter-spacing: 4px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .calendar {
+            background: rgba(250, 248, 242, 0.95);
+            padding: 35px;
+            border-radius: 2px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+            border: 1px solid #e0d9c7;
+        }
+
+        .calendar-header {
+            font-size: 1em;
+            color: #2b2b2b;
+            margin-bottom: 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .calendar-day {
+            padding: 12px;
+            font-size: 1em;
+            color: #4a4a4a;
+            font-weight: 300;
+        }
+
+        .calendar-day.other-month {
+            color: #b5ab9a;
+        }
+
+        .calendar-day.wedding-day {
+            background: #8B0000;
+            color: #fff;
+            border-radius: 1px;
+            font-weight: 500;
+        }
+
         .music-toggle {
             position: fixed;
             top: 20px;
@@ -156,28 +289,104 @@
             color: white;
             padding: 10px 18px;
             border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 0.9em;
             cursor: pointer;
             z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             border: none;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Georama', sans-serif;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
+        .music-toggle:hover {
+            background: #7a6b5d;
+            transform: translateY(-1px);
+        }
+
+        .footer {
+            margin-top: 80px;
+            font-size: 0.8em;
+            color: #999;
+            letter-spacing: 1px;
+        }
+        
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
             40% {transform: translateY(-5px);}
             60% {transform: translateY(-3px);}
         }
+        
+        @media (max-width: 768px) {
+            .envelope {
+                width: 280px;
+                height: 190px;
+            }
+            
+            .envelope:before {
+                top: -70px;
+                border-left: 140px solid transparent;
+                border-right: 140px solid transparent;
+                border-bottom: 70px solid #700000;
+            }
+            
+            .names {
+                font-size: 2.2em;
+                letter-spacing: 4px;
+            }
+            
+            .date {
+                font-size: 1.2em;
+            }
+            
+            .invitation-banner {
+                margin: 30px auto;
+                padding: 25px 20px;
+            }
+            
+            .invitation-content h2 {
+                font-size: 1.3em;
+            }
+            
+            .calendar {
+                padding: 25px 20px;
+            }
+            
+            .calendar-grid {
+                gap: 5px;
+            }
+            
+            .calendar-day {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            
+            .music-toggle {
+                top: 15px;
+                right: 15px;
+                padding: 8px 14px;
+                font-size: 0.8em;
+            }
+            
+            .calendar-title {
+                font-size: 1.4em;
+                letter-spacing: 3px;
+            }
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Конверт для открытия -->
+    <!-- Конверт с печатью -->
     <div class="envelope-container" id="envelopeContainer">
-        <div class="envelope" onclick="openEnvelope()">
-            <div class="envelope-text">Приглашение</div>
+        <div class="envelope">
+            <div class="envelope-seal" onclick="openEnvelope()">
+                <div class="envelope-seal-text">Нажать</div>
+            </div>
         </div>
-        <div class="envelope-instruction">Для просмотра нажмите на конверт</div>
+        <div class="envelope-instruction">Для просмотра нажмите на печать</div>
     </div>
 
     <!-- Основной контент (скрыт до открытия конверта) -->
@@ -188,12 +397,69 @@
             <div class="scroll-prompt">Листайте вниз</div>
         </div>
 
+        <!-- Баннер с приглашением -->
         <div class="invitation-banner">
+            <div class="music-note">🎵</div>
+            <p class="music-text">Если музыка Вас отвлекает, ее можно отключить, нажав на кнопку</p>
+            
             <div class="invitation-content">
                 <h2>ДОРОГИЕ РОДНЫЕ И БЛИЗКИЕ!</h2>
                 <p>Приглашаем Вас разделить с нами радость особенного для нас события и стать частью нашей семейной истории!</p>
                 <p>Совсем скоро состоится наша <strong>СВАДЬБА!</strong><br>И мы не представляем этот праздник без Вас, близких и дорогих нам людей.</p>
             </div>
+        </div>
+
+        <!-- Календарь -->
+        <div class="calendar-section">
+            <div class="calendar-title">ДАТА</div>
+            <div class="calendar">
+                <div class="calendar-header">ПН ВТ СР ЧТ ПТ СБ ВС</div>
+                <div class="calendar-grid">
+                    <div class="calendar-day other-month">27</div>
+                    <div class="calendar-day other-month">28</div>
+                    <div class="calendar-day other-month">29</div>
+                    <div class="calendar-day other-month">30</div>
+                    <div class="calendar-day other-month">31</div>
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day">4</div>
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day">6</div>
+                    <div class="calendar-day">7</div>
+                    <div class="calendar-day wedding-day">8</div>
+                    <div class="calendar-day">9</div>
+                    <div class="calendar-day">10</div>
+                    <div class="calendar-day">11</div>
+                    <div class="calendar-day">12</div>
+                    <div class="calendar-day">13</div>
+                    <div class="calendar-day">14</div>
+                    <div class="calendar-day">15</div>
+                    <div class="calendar-day">16</div>
+                    <div class="calendar-day">17</div>
+                    <div class="calendar-day">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day">20</div>
+                    <div class="calendar-day">21</div>
+                    <div class="calendar-day">22</div>
+                    <div class="calendar-day">23</div>
+                    <div class="calendar-day">24</div>
+                    <div class="calendar-day">25</div>
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-day">27</div>
+                    <div class="calendar-day">28</div>
+                    <div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                    <div class="calendar-day">31</div>
+                    <div class="calendar-day other-month">1</div>
+                    <div class="calendar-day other-month">2</div>
+                    <div class="calendar-day other-month">3</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            С любовью для наших гостей
         </div>
 
         <!-- Кнопка включения/выключения звука -->
