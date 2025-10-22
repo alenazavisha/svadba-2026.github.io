@@ -15,8 +15,8 @@
         
         body {
             font-family: 'EB Garamond', serif;
-            background: #f5f5f5;
-            color: #333333;
+            background: #F1EADA; /* Vanilla */
+            color: #584738; /* Mahogany */
             min-height: 100vh;
             overflow: hidden;
         }
@@ -35,44 +35,44 @@
             align-items: center;
             z-index: 1000;
             transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
-            padding-bottom: 40px; /* Опустили ниже */
+            padding-bottom: 40px;
         }
         
         .invitation-overlay {
-            background: rgba(245, 245, 245, 0.9);
-            padding: 20px 25px; /* Уменьшили padding */
+            background: rgba(241, 234, 218, 0.95); /* Vanilla */
+            padding: 20px 25px;
             border-radius: 8px;
             text-align: center;
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.3);
-            margin-bottom: 20px; /* Уменьшили отступ */
+            border: 1px solid rgba(181, 158, 125, 0.3); /* Tobacco */
+            margin-bottom: 20px;
         }
         
         .invitation-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5em; /* Уменьшили размер */
+            font-size: 2.5em;
             font-weight: 400;
-            letter-spacing: 3px; /* Уменьшили межбуквенное расстояние */
-            color: #333333;
+            letter-spacing: 3px;
+            color: #584738; /* Mahogany */
             text-shadow: 2px 2px 10px rgba(255,255,255,0.8);
             cursor: pointer;
             animation: pulse 2s infinite;
             margin-bottom: 10px;
             padding: 10px 20px;
-            border: 2px solid rgba(51,51,51,0.3);
+            border: 2px solid rgba(181, 158, 125, 0.5); /* Tobacco */
             transition: all 0.3s ease;
         }
         
         .invitation-title:hover {
-            border-color: rgba(51,51,51,0.8);
+            border-color: #584738; /* Mahogany */
             transform: scale(1.03);
-            background: rgba(51,51,51,0.05);
+            background: rgba(181, 158, 125, 0.1); /* Tobacco */
         }
         
         .invitation-subtitle {
-            font-size: 0.9em; /* Уменьшили размер */
+            font-size: 0.9em;
             letter-spacing: 1px;
-            color: #666666;
+            color: #584738; /* Mahogany */
             margin-top: 5px;
             font-family: 'EB Garamond', serif;
             font-weight: 300;
@@ -84,8 +84,8 @@
             transform: translateY(50px);
             transition: all 1s ease;
             padding: 40px 20px;
-            background: #f5f5f5;
-            color: #333333;
+            background: #F1EADA; /* Vanilla */
+            color: #584738; /* Mahogany */
             min-height: 100vh;
             display: none;
         }
@@ -98,26 +98,26 @@
 
         /* === БЛОК 1: ПРИГЛАШЕНИЕ === */
         .invitation-banner {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             padding: 40px 30px;
             margin: 50px auto 30px auto;
-            border-radius: 2px;
+            border-radius: 8px;
             max-width: 780px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 20px rgba(88, 71, 56, 0.1); /* Mahogany */
+            border: 1px solid #CEC1A8; /* Sand */
             text-align: center;
         }
 
         .music-note {
             font-size: 1.8em;
             margin-bottom: 15px;
-            color: #666666;
+            color: #B59E7D; /* Tobacco */
         }
 
         .music-text {
             font-family: 'EB Garamond', serif;
             font-size: 0.9em;
-            color: #666666;
+            color: #AAA396; /* Mountain */
             margin-bottom: 30px;
             font-style: italic;
             letter-spacing: 0.5px;
@@ -125,7 +125,7 @@
 
         .invitation-content h2 {
             font-family: 'Playfair Display', serif;
-            color: #222222;
+            color: #584738; /* Mahogany */
             font-size: 1.8em;
             margin-bottom: 25px;
             letter-spacing: 1px;
@@ -139,13 +139,13 @@
             font-size: 1.1em;
             line-height: 1.7;
             margin: 20px 0;
-            color: #444444;
+            color: #584738; /* Mahogany */
             font-weight: 300;
         }
 
         .invitation-content strong {
             font-weight: 500;
-            color: #222222;
+            color: #584738; /* Mahogany */
         }
 
         /* === БЛОК 2: КАЛЕНДАРЬ === */
@@ -162,7 +162,7 @@
         .section-title h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.2em;
-            color: #222222;
+            color: #584738; /* Mahogany */
             font-weight: 400;
             letter-spacing: 3px;
             margin-bottom: 15px;
@@ -172,22 +172,22 @@
         .title-divider {
             width: 60px;
             height: 2px;
-            background: #8B0000;
+            background: #B59E7D; /* Tobacco */
             margin: 0 auto;
         }
 
         .calendar {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             padding: 35px;
-            border-radius: 2px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(88, 71, 56, 0.1); /* Mahogany */
+            border: 1px solid #CEC1A8; /* Sand */
         }
 
         .calendar-header {
             font-family: 'EB Garamond', serif;
             font-size: 1em;
-            color: #222222;
+            color: #584738; /* Mahogany */
             margin-bottom: 25px;
             font-weight: 500;
             text-transform: uppercase;
@@ -205,27 +205,29 @@
             font-family: 'EB Garamond', serif;
             padding: 12px;
             font-size: 1em;
-            color: #444444;
+            color: #584738; /* Mahogany */
             font-weight: 300;
             border: 1px solid transparent;
             transition: all 0.3s ease;
             text-align: center;
+            border-radius: 4px;
         }
 
         .calendar-day:hover {
-            border-color: #cccccc;
+            border-color: #CEC1A8; /* Sand */
+            background: rgba(206, 193, 168, 0.1); /* Sand */
         }
 
         .calendar-day.other-month {
-            color: #b5ab9a;
+            color: #AAA396; /* Mountain */
         }
 
         .calendar-day.wedding-day {
-            background: #8B0000;
-            color: #fff;
-            border-radius: 1px;
+            background: #B59E7D; /* Tobacco */
+            color: #FFFFFF;
+            border-radius: 4px;
             font-weight: 500;
-            border-color: #8B0000;
+            border-color: #B59E7D; /* Tobacco */
         }
 
         /* === БЛОК 3: ЛОКАЦИЯ === */
@@ -242,11 +244,11 @@
         }
 
         .location-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             padding: 40px 30px;
             border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 20px rgba(88, 71, 56, 0.1); /* Mahogany */
+            border: 1px solid #CEC1A8; /* Sand */
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -256,12 +258,13 @@
         .location-icon {
             font-size: 3em;
             margin-bottom: 20px;
+            color: #B59E7D; /* Tobacco */
         }
 
         .location-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.6em;
-            color: #222222;
+            color: #584738; /* Mahogany */
             margin-bottom: 15px;
             font-weight: 400;
         }
@@ -270,7 +273,7 @@
             font-family: 'EB Garamond', serif;
             font-size: 1.1em;
             line-height: 1.6;
-            color: #444444;
+            color: #584738; /* Mahogany */
             margin-bottom: 25px;
         }
 
@@ -287,19 +290,20 @@
             gap: 10px;
             font-family: 'EB Garamond', serif;
             font-size: 1em;
-            color: #555555;
+            color: #584738; /* Mahogany */
         }
 
         .detail-icon {
             font-size: 1.2em;
             width: 20px;
             text-align: center;
+            color: #B59E7D; /* Tobacco */
         }
 
         .map-link {
             display: inline-block;
-            background: #8B0000;
-            color: white;
+            background: #B59E7D; /* Tobacco */
+            color: #FFFFFF;
             padding: 12px 25px;
             text-decoration: none;
             border-radius: 5px;
@@ -307,11 +311,13 @@
             font-size: 1em;
             transition: all 0.3s ease;
             margin-top: auto;
+            border: 1px solid #B59E7D; /* Tobacco */
         }
 
         .map-link:hover {
-            background: #700000;
+            background: #9C8665;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(181, 158, 125, 0.3); /* Tobacco */
         }
 
         /* === БЛОК 4: ТАЙМИНГ === */
@@ -333,7 +339,7 @@
             transform: translateX(-50%);
             width: 2px;
             height: 100%;
-            background: linear-gradient(to bottom, #8B0000, #cccccc);
+            background: linear-gradient(to bottom, #B59E7D, #CEC1A8); /* Tobacco to Sand */
             top: 0;
         }
 
@@ -355,10 +361,10 @@
             transform: translateX(-50%);
             width: 12px;
             height: 12px;
-            background: #8B0000;
+            background: #B59E7D; /* Tobacco */
             border-radius: 50%;
-            border: 3px solid #ffffff;
-            box-shadow: 0 0 0 2px #8B0000;
+            border: 3px solid #F1EADA; /* Vanilla */
+            box-shadow: 0 0 0 2px #B59E7D; /* Tobacco */
         }
 
         .timeline-time {
@@ -367,24 +373,24 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.3em;
             font-weight: 500;
-            color: #8B0000;
+            color: #B59E7D; /* Tobacco */
             padding: 0 20px;
         }
 
         .timeline-content {
             flex: 1;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             padding: 25px 30px;
             border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 20px rgba(88, 71, 56, 0.1); /* Mahogany */
+            border: 1px solid #CEC1A8; /* Sand */
             position: relative;
         }
 
         .timeline-content h4 {
             font-family: 'Playfair Display', serif;
             font-size: 1.3em;
-            color: #222222;
+            color: #584738; /* Mahogany */
             margin-bottom: 10px;
             font-weight: 400;
         }
@@ -392,7 +398,7 @@
         .timeline-content p {
             font-family: 'EB Garamond', serif;
             font-size: 1.1em;
-            color: #444444;
+            color: #584738; /* Mahogany */
             line-height: 1.5;
             font-style: italic;
         }
@@ -405,17 +411,17 @@
         }
 
         .telegram-block {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             padding: 40px 30px;
             border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 20px rgba(88, 71, 56, 0.1); /* Mahogany */
+            border: 1px solid #CEC1A8; /* Sand */
             text-align: center;
         }
 
         .telegram-block h3 {
             font-family: 'Playfair Display', serif;
-            color: #222222;
+            color: #584738; /* Mahogany */
             font-size: 1.5em;
             margin-bottom: 20px;
             font-weight: 400;
@@ -425,7 +431,7 @@
             font-family: 'EB Garamond', serif;
             font-size: 1.1em;
             line-height: 1.6;
-            color: #444444;
+            color: #584738; /* Mahogany */
             margin: 15px 0;
         }
 
@@ -433,8 +439,8 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: #0088cc;
-            color: white;
+            background: #B59E7D; /* Tobacco */
+            color: #FFFFFF;
             padding: 15px 35px;
             text-decoration: none;
             border-radius: 5px;
@@ -444,6 +450,7 @@
             letter-spacing: 1px;
             margin-top: 20px;
             transition: all 0.3s ease;
+            border: 1px solid #B59E7D; /* Tobacco */
         }
 
         .telegram-btn::before {
@@ -452,9 +459,9 @@
         }
 
         .telegram-btn:hover {
-            background: #0066a4;
+            background: #9C8665;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,136,204,0.3);
+            box-shadow: 0 5px 15px rgba(181, 158, 125, 0.3); /* Tobacco */
         }
 
         /* === БЛОК 6: ТАЙМЕР === */
@@ -465,17 +472,17 @@
         }
 
         .countdown-block {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             padding: 40px 30px;
             border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 20px rgba(88, 71, 56, 0.1); /* Mahogany */
+            border: 1px solid #CEC1A8; /* Sand */
             text-align: center;
         }
 
         .countdown-block h3 {
             font-family: 'Playfair Display', serif;
-            color: #222222;
+            color: #584738; /* Mahogany */
             font-size: 1.5em;
             margin-bottom: 20px;
             font-weight: 400;
@@ -498,14 +505,14 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.5em;
             font-weight: 600;
-            color: #222222;
+            color: #584738; /* Mahogany */
             min-width: 60px;
         }
 
         .time-unit small {
             font-family: 'EB Garamond', serif;
             font-size: 0.9em;
-            color: #666666;
+            color: #AAA396; /* Mountain */
             margin-top: 5px;
         }
 
@@ -513,33 +520,34 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background: rgba(255,255,255,0.9);
-            color: #333333;
+            background: rgba(255, 255, 255, 0.9);
+            color: #584738; /* Mahogany */
             padding: 10px 18px;
-            border-radius: 2px;
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.9em;
             cursor: pointer;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border: 1px solid #cccccc;
+            box-shadow: 0 2px 10px rgba(88, 71, 56, 0.1); /* Mahogany */
+            border: 1px solid #CEC1A8; /* Sand */
             font-family: 'EB Garamond', serif;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
         }
 
         .music-toggle:hover {
-            background: rgba(245,245,245,0.9);
+            background: rgba(255, 255, 255, 1);
             transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(88, 71, 56, 0.2); /* Mahogany */
         }
 
         .footer {
             margin-top: 80px;
             font-family: 'EB Garamond', serif;
             font-size: 0.9em;
-            color: #666666;
+            color: #AAA396; /* Mountain */
             letter-spacing: 1px;
             text-align: center;
         }
