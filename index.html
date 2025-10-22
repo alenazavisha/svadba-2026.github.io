@@ -106,6 +106,14 @@
             box-shadow: 0 5px 20px rgba(88, 71, 56, 0.1); /* Mahogany */
             border: 1px solid #CEC1A8; /* Sand */
             text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
 
         .music-note {
@@ -152,6 +160,9 @@
         .calendar-section {
             margin: 60px auto;
             max-width: 800px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
         }
 
         .section-title {
@@ -235,6 +246,9 @@
             max-width: 1000px;
             margin: 80px auto;
             padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.4s;
         }
 
         .locations-container {
@@ -325,6 +339,9 @@
             max-width: 800px;
             margin: 80px auto;
             padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.6s;
         }
 
         .timeline {
@@ -367,14 +384,20 @@
             box-shadow: 0 0 0 2px #B59E7D; /* Tobacco */
         }
 
+        /* ИСПРАВЛЕНИЕ: Сделал время более контрастным и читаемым */
         .timeline-time {
             flex: 1;
             text-align: center;
             font-family: 'Playfair Display', serif;
             font-size: 1.3em;
-            font-weight: 500;
-            color: #B59E7D; /* Tobacco */
+            font-weight: 600; /* Сделал жирнее */
+            color: #584738; /* Изменил на темный Mahogany вместо светлого Tobacco */
             padding: 0 20px;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8); /* Добавил тень для лучшей читаемости */
+            background: rgba(255, 255, 255, 0.7); /* Добавил легкий фон */
+            border-radius: 5px;
+            margin: 0 10px;
+            padding: 8px 5px;
         }
 
         .timeline-content {
@@ -408,6 +431,9 @@
             max-width: 900px;
             margin: 80px auto;
             padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.8s;
         }
 
         .telegram-block {
@@ -469,6 +495,9 @@
             max-width: 900px;
             margin: 80px auto;
             padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 1s;
         }
 
         .countdown-block {
@@ -550,6 +579,9 @@
             color: #AAA396; /* Mountain */
             letter-spacing: 1px;
             text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 1.2s;
         }
         
         @keyframes pulse {
@@ -604,11 +636,13 @@
                 left: 30px;
             }
             
+            /* Адаптив для исправленного времени */
             .timeline-time {
                 flex: 0 0 80px;
                 text-align: left;
-                padding: 0 15px 0 0;
+                padding: 8px 5px;
                 font-size: 1.1em;
+                margin: 0 15px 0 0;
             }
             
             .timeline-content {
@@ -682,7 +716,7 @@
     <!-- Основной контент -->
     <div class="main-content" id="mainContent">
         <!-- === БЛОК 1: ПРИГЛАШЕНИЕ === -->
-        <div class="invitation-banner">
+        <div class="invitation-banner" id="section1">
             <div class="music-note">🎵</div>
             <p class="music-text">Если музыка Вас отвлекает, ее можно отключить, нажав на кнопку</p>
             
@@ -694,7 +728,7 @@
         </div>
 
         <!-- === БЛОК 2: КАЛЕНДАРЬ === -->
-        <div class="calendar-section">
+        <div class="calendar-section" id="section2">
             <div class="section-title">
                 <h2>ДАТА</h2>
                 <div class="title-divider"></div>
@@ -746,7 +780,7 @@
         </div>
 
         <!-- === БЛОК 3: ЛОКАЦИЯ === -->
-        <div class="location-section">
+        <div class="location-section" id="section3">
             <div class="section-title">
                 <h2>ЛОКАЦИЯ</h2>
                 <div class="title-divider"></div>
@@ -800,7 +834,7 @@
         </div>
 
         <!-- === БЛОК 4: ТАЙМИНГ === -->
-        <div class="schedule-section">
+        <div class="schedule-section" id="section4">
             <div class="section-title">
                 <h2>РАСПИСАНИЕ ДНЯ</h2>
                 <div class="title-divider"></div>
@@ -858,7 +892,7 @@
         </div>
 
         <!-- === БЛОК 5: TELEGRAM ГРУППА === -->
-        <div class="telegram-section">
+        <div class="telegram-section" id="section5">
             <div class="section-title">
                 <h2>ФОТО И ВИДЕО</h2>
                 <div class="title-divider"></div>
@@ -872,7 +906,7 @@
         </div>
 
         <!-- === БЛОК 6: ТАЙМЕР === -->
-        <div class="countdown-section">
+        <div class="countdown-section" id="section6">
             <div class="section-title">
                 <h2>ДО СВАДЬБЫ ОСТАЛОСЬ</h2>
                 <div class="title-divider"></div>
@@ -899,13 +933,16 @@
             </div>
         </div>
         
-        <div class="footer">
+        <div class="footer" id="footer">
             С любовью для наших гостей
         </div>
 
         <!-- Автовоспроизведение музыки -->
+        <!-- ЗАМЕНИТЕ "music.mp3" на название вашего нового файла с музыкой -->
         <audio loop id="bgMusic" volume="0.5">
             <source src="music.mp3" type="audio/mpeg">
+            <!-- Если браузер не поддерживает audio -->
+            Ваш браузер не поддерживает аудио элементы.
         </audio>
         
         <!-- Кнопка включения/выключения звука -->
@@ -927,6 +964,8 @@
                 mainContent.classList.add('show');
                 // Включаем прокрутку
                 document.body.style.overflow = 'auto';
+                // Активируем анимации для секций
+                activateAnimations();
                 // Пытаемся включить музыку
                 audio.play().catch(function() {
                     console.log('Автовоспроизведение заблокировано');
@@ -937,6 +976,37 @@
             setTimeout(() => {
                 invitationScreen.style.display = 'none';
             }, 1500);
+        }
+        
+        // Функция для активации анимаций секций при скролле
+        function activateAnimations() {
+            const sections = [
+                'section1', 'section2', 'section3', 
+                'section4', 'section5', 'section6', 'footer'
+            ];
+            
+            // Сразу показываем первую секцию
+            document.getElementById('section1').classList.add('section-visible');
+            
+            // Наблюдатель за пересечением для остальных секций
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            // Наблюдаем за всеми секциями кроме первой
+            sections.slice(1).forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    observer.observe(section);
+                }
+            });
         }
         
         function toggleMusic() {
