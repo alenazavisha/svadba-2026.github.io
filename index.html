@@ -1,298 +1,287 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Константин и Алёна | 08.08.2026</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Константин и Алёна | 08.08.2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #FAF7F0;
+            color: #3C3C3C;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        a { text-decoration:none; }
+        /* === Приглашение на весь экран === */
+        .invitation-screen {
+            position: fixed; top:0; left:0;
+            width:100%; height:100%;
+            background: url('invitation-photo.JPG') center/cover no-repeat;
+            display:flex; flex-direction:column; justify-content:flex-end; align-items:center;
+            z-index:1000; padding-bottom:40px;
+            transition: all 1.5s ease-in-out;
+        }
+        .invitation-overlay {
+            background: rgba(255,255,255,0.85);
+            padding:25px 35px;
+            border-radius:10px;
+            text-align:center;
+            backdrop-filter: blur(5px);
+            border:1px solid rgba(0,0,0,0.1);
+        }
+        .invitation-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            font-weight:500;
+            letter-spacing:2px;
+            color:#BFA06A;
+            cursor:pointer;
+            padding:15px 25px;
+            border:2px solid rgba(191,160,106,0.4);
+            transition:0.3s ease;
+        }
+        .invitation-title:hover {
+            transform: scale(1.05);
+            border-color:#BFA06A;
+            background: rgba(191,160,106,0.1);
+        }
+        .invitation-subtitle {
+            font-size:1em; color:#3C3C3C; margin-top:8px;
+        }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+        /* Основной контент */
+        .main-content {
+            opacity:0; transform:translateY(50px);
+            transition:all 1s ease;
+            display:none;
+            padding:0;
+        }
+        .main-content.show { opacity:1; transform:translateY(0); display:block; }
 
-body {
-    font-family:'EB Garamond', serif;
-    background:#f5f4f2;
-    color:#333;
-    overflow-x:hidden;
-    line-height:1.6;
-}
+        /* Фото между блоками */
+        .section-photo {
+            width:100%; max-width:900px;
+            margin:50px auto; border-radius:8px; overflow:hidden;
+            box-shadow:0 5px 20px rgba(0,0,0,0.15);
+            opacity:0; transform:translateY(30px);
+            transition:all 0.8s ease;
+        }
+        .section-photo img { width:100%; height:auto; display:block; }
 
-/* === ЭКРАН ПРИГЛАШЕНИЯ === */
-.invitation-screen {
-    position: fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background: linear-gradient(135deg, #f5f4f2, #c7b48a);
-    z-index:1000;
-    transition: transform 1s ease, opacity 1s ease;
-}
+        /* Секции */
+        .section-block {
+            background:#FFFFFF; 
+            padding:50px 40px; margin:50px auto; 
+            max-width:780px; border-radius:10px; 
+            box-shadow:0 8px 25px rgba(0,0,0,0.08); 
+            text-align:center; 
+            color:#3C3C3C;
+            border:1px solid rgba(191,160,106,0.15);
+            opacity:0; transform:translateY(30px);
+            transition:all 0.8s ease;
+        }
+        .section-visible { opacity:1 !important; transform:translateY(0) !important; }
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size:2em;
+            color:#BFA06A;
+            margin-bottom:15px;
+            font-weight:500;
+        }
+        .title-divider { width:60px; height:2px; background:#BFA06A; margin:0 auto; margin-bottom:30px; }
 
-.invitation-overlay {
-    background: rgba(255,255,255,0.85);
-    padding: 30px 40px;
-    border-radius:12px;
-    text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,0.2);
-}
+        /* Основной контент блоков */
+        h3,h4 { font-family: 'Playfair Display', serif; color:#3C3C3C; }
+        p { font-family:'EB Garamond', serif; line-height:1.6; margin:15px 0; color:#3C3C3C; }
+        strong { font-weight:600; color:#BFA06A; }
 
-.invitation-title {
-    font-family:'Playfair Display', serif;
-    font-size:2.8em;
-    font-weight:600;
-    color:#b8915f;
-    letter-spacing:2px;
-    cursor:pointer;
-    margin-bottom:15px;
-    transition: all 0.3s ease;
-}
+        /* Таймер */
+        .countdown-timer { display:flex; justify-content:center; gap:25px; margin-top:25px; }
+        .time-unit { display:flex; flex-direction:column; align-items:center; }
+        .time-unit span { font-family:'Playfair Display', serif; font-size:2.5em; color:#BFA06A; min-width:60px; }
+        .time-unit small { font-family:'EB Garamond', serif; font-size:0.9em; color:#3C3C3C; margin-top:5px; }
 
-.invitation-title:hover {
-    transform: scale(1.05);
-}
+        /* Кнопка музыки */
+        .music-toggle {
+            position: fixed; top:20px; right:20px;
+            background:#BFA06A; color:#fff;
+            padding:12px 18px; border-radius:5px;
+            cursor:pointer; z-index:1000;
+            font-family:'EB Garamond', serif; border:none;
+            transition:0.3s ease;
+        }
+        .music-toggle:hover { transform:translateY(-2px); box-shadow:0 4px 15px rgba(0,0,0,0.2); }
 
-.invitation-subtitle {
-    font-size:1em;
-    color:#555;
-    font-style:italic;
-}
+        /* Футер */
+        .footer { text-align:center; font-family:'EB Garamond', serif; font-size:0.9em; color:#3C3C3C; opacity:0; transform:translateY(30px); transition:all 0.8s ease 2s; margin-bottom:50px; }
 
-/* === ОСНОВНОЙ КОНТЕНТ === */
-.main-content {
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(50px);
-    transition:all 1s ease;
-}
+        /* Адаптив */
+        @media(max-width:768px){
+            .section-block { padding:30px 20px; }
+            .section-title h2 { font-size:1.6em; }
+            .countdown-timer { gap:15px; }
+            .time-unit span { font-size:2em; }
+        }
 
-.main-content.show {
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
-}
-
-/* === БЛОКИ === */
-.section-block {
-    background:#fffef8;
-    padding:40px 30px;
-    margin:60px auto;
-    border-radius:12px;
-    max-width:800px;
-    box-shadow:0 5px 25px rgba(0,0,0,0.1);
-    border:1px solid #e2dfd3;
-    text-align:center;
-    color:#333;
-}
-
-.section-title h2 {
-    font-family:'Playfair Display', serif;
-    font-size:2em;
-    color:#b8915f;
-    margin-bottom:10px;
-}
-
-.title-divider {
-    width:60px;
-    height:2px;
-    background:#b8915f;
-    margin:0 auto;
-    margin-bottom:20px;
-}
-
-/* Фото между блоками */
-.section-photo {
-    width:100%;
-    max-width:900px;
-    margin:40px auto;
-    border-radius:12px;
-    overflow:hidden;
-    opacity:0;
-    transform:translateY(30px);
-    transition:all 0.8s ease;
-}
-
-.section-photo img {
-    width:100%;
-    height:auto;
-    display:block;
-}
-
-/* Плавное появление секций */
-.section-visible {
-    opacity:1 !important;
-    transform:translateY(0) !important;
-}
-
-/* Кнопка музыки */
-.music-toggle {
-    position:fixed;
-    top:20px; right:20px;
-    background:rgba(184,145,95,0.85);
-    color:#fff;
-    padding:10px 18px;
-    border-radius:8px;
-    cursor:pointer;
-    border:none;
-    font-size:0.9em;
-    font-family:'EB Garamond', serif;
-    z-index:1000;
-    transition: all 0.3s ease;
-}
-
-.music-toggle:hover {
-    transform:translateY(-2px);
-    box-shadow:0 4px 15px rgba(0,0,0,0.2);
-}
-
-/* Таймер */
-.countdown-timer {
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    margin-top:25px;
-}
-
-.time-unit {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    font-family:'Playfair Display', serif;
-    color:#b8915f;
-}
-
-.time-unit span {
-    font-size:2.5em;
-    font-weight:600;
-}
-
-.time-unit small {
-    font-size:0.9em;
-    color:#555;
-}
-
-/* Ссылки */
-a {
-    text-decoration:none;
-    color:#b8915f;
-    transition: all 0.3s ease;
-}
-
-a:hover {
-    color:#8f6d3e;
-}
-
-/* Адаптивность */
-@media(max-width:768px){
-    .section-block {padding:30px 20px; margin:40px 20px;}
-    .section-title h2 {font-size:1.6em;}
-    .countdown-timer {flex-direction:column; gap:15px;}
-}
-
-</style>
+    </style>
 </head>
 <body>
-
-<!-- Экран приглашения -->
-<div class="invitation-screen" id="invitationScreen">
-    <div class="invitation-overlay">
-        <div class="invitation-title" onclick="openInvitation()">ПРИГЛАШЕНИЕ</div>
-        <div class="invitation-subtitle">Нажмите, чтобы открыть</div>
-    </div>
-</div>
-
-<!-- Основной контент -->
-<div class="main-content" id="mainContent">
-
-    <!-- Пример блока -->
-    <div class="section-block section-visible">
-        <div class="section-title"><h2>ДОРОГИЕ РОДНЫЕ И БЛИЗКИЕ!</h2></div>
-        <p>Приглашаем Вас разделить с нами радость особенного для нас события и стать частью нашей семейной истории!</p>
-        <p>Совсем скоро состоится наша <strong>СВАДЬБА!</strong> И мы не представляем этот праздник без Вас.</p>
-    </div>
-
-    <div class="section-photo"><img src="photo-block1.PNG" alt="Наше фото"></div>
-
-    <div class="section-block">
-        <div class="section-title"><h2>ДАТА</h2></div>
-        <p>08.08.2026</p>
-    </div>
-
-    <div class="section-photo"><img src="photo-block2-after.JPG" alt="Наше фото"></div>
-
-    <div class="section-block">
-        <div class="section-title"><h2>ЛОКАЦИЯ</h2></div>
-        <p>Роспись: ЗАГС, ул. Ленина, 94, 15:00<br>Банкет: Ресторан "Старая Мельница", пер. Пушкина, 1, 18:00</p>
-    </div>
-
-    <div class="section-photo"><img src="photo-block3-after.JPG" alt="Наше фото"></div>
-
-    <div class="section-block">
-        <div class="section-title"><h2>ТАЙМЕР ДО СВАДЬБЫ</h2></div>
-        <div class="countdown-timer">
-            <div class="time-unit"><span id="days">0</span><small>дней</small></div>
-            <div class="time-unit"><span id="hours">0</span><small>часов</small></div>
-            <div class="time-unit"><span id="minutes">0</span><small>минут</small></div>
-            <div class="time-unit"><span id="seconds">0</span><small>секунд</small></div>
+    <!-- Экран приглашения -->
+    <div class="invitation-screen" id="invitationScreen">
+        <div class="invitation-overlay">
+            <div class="invitation-title" onclick="openInvitation()">ПРИГЛАШЕНИЕ</div>
+            <div class="invitation-subtitle">Нажмите, чтобы открыть</div>
         </div>
     </div>
 
-</div>
+    <!-- Основной контент -->
+    <div class="main-content" id="mainContent">
+        <!-- === Блок 1: Приглашение === -->
+        <div class="section-block" id="section1">
+            <h2>ДОРОГИЕ РОДНЫЕ И БЛИЗКИЕ!</h2>
+            <p>Приглашаем Вас разделить с нами радость особенного для нас события!</p>
+            <p>Совсем скоро состоится наша <strong>СВАДЬБА!</strong></p>
+        </div>
+        <div class="section-photo"><img src="photo-block1.PNG" alt="Фото"></div>
 
-<!-- Музыка -->
-<audio loop id="bgMusic" volume="0.5">
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-<button class="music-toggle" onclick="toggleMusic()">🔊</button>
+        <!-- === Блок 2: Календарь === -->
+        <div class="section-block" id="section2">
+            <h2>ДАТА</h2>
+            <p>08.08.2026</p>
+        </div>
+        <div class="section-photo"><img src="photo-block2-after.JPG" alt="Фото"></div>
 
-<script>
-// Открытие приглашения
-function openInvitation() {
-    const invitationScreen = document.getElementById('invitationScreen');
-    const mainContent = document.getElementById('mainContent');
-    const audio = document.getElementById('bgMusic');
+        <!-- === Блок 3: Локация === -->
+        <div class="section-block" id="section3">
+            <h2>ЛОКАЦИЯ</h2>
+            <p>ЗАГС и Банкет (адреса см. в карте)</p>
+        </div>
+        <div class="section-photo"><img src="photo-block3-after.JPG" alt="Фото"></div>
 
-    invitationScreen.style.transform = 'translateY(-100%)';
-    invitationScreen.style.opacity = '0';
+        <!-- === Блок 4: Расписание === -->
+        <div class="section-block" id="section4">
+            <h2>РАСПИСАНИЕ ДНЯ</h2>
+            <p>15:00 — ЗАГС</p>
+            <p>18:00 — Церемония</p>
+            <p>18:40 — Банкет</p>
+            <p>21:00 — Торт</p>
+            <p>23:00 — Окончание мероприятия</p>
+        </div>
+        <div class="section-photo"><img src="photo-block4-after.JPG" alt="Фото"></div>
 
-    setTimeout(()=>{
-        mainContent.classList.add('show');
-        document.body.style.overflow='auto';
-        audio.play().catch(()=>console.log('Автовоспроизведение заблокировано'));
-    },800);
+        <!-- === Блок 5: Telegram === -->
+        <div class="section-block" id="section5">
+            <h2>ФОТО И ВИДЕО</h2>
+            <p>Мы создали группу в Telegram для фото и видео со свадьбы.</p>
+            <a href="https://t.me/KostyaAlenaWedding2026" target="_blank" class="music-toggle">ВСТУПИТЬ</a>
+        </div>
+        <div class="section-photo"><img src="photo-block5-after.JPG" alt="Фото"></div>
 
-    setTimeout(()=>{ invitationScreen.style.display='none'; },1500);
-}
+        <!-- === Блок 6: Таймер === -->
+        <div class="section-block" id="section6">
+            <h2>ДО СВАДЬБЫ ОСТАЛОСЬ</h2>
+            <div class="countdown-timer">
+                <div class="time-unit"><span id="days">0</span><small>дней</small></div>
+                <div class="time-unit"><span id="hours">0</span><small>часов</small></div>
+                <div class="time-unit"><span id="minutes">0</span><small>минут</small></div>
+                <div class="time-unit"><span id="seconds">0</span><small>секунд</small></div>
+            </div>
+        </div>
+        <div class="section-photo"><img src="photo-block6-after.JPG" alt="Фото"></div>
 
-// Включение/выключение музыки
-function toggleMusic(){
-    const audio=document.getElementById('bgMusic');
-    const btn=document.querySelector('.music-toggle');
-    if(audio.paused){ audio.play(); btn.innerHTML='🔊'; }
-    else { audio.pause(); btn.innerHTML='🔇'; }
-}
+        <!-- === Блок 7: Дресс-код === -->
+        <div class="section-block" id="section7">
+            <h2>ДРЕСС-КОД</h2>
+            <p>Главное — Ваше присутствие! Любые красивые наряды приветствуются 💝</p>
+        </div>
+        <div class="section-photo"><img src="photo-block7-after.JPG" alt="Фото"></div>
 
-// Таймер
-function updateCountdown(){
-    const weddingDate=new Date('2026-08-08T18:00:00');
-    const now=new Date();
-    const diff=weddingDate-now;
+        <!-- === Блок 8: Пожелания === -->
+        <div class="section-block" id="section8">
+            <h2>НАШИ ПОЖЕЛАНИЯ</h2>
+            <p>Ваше присутствие — лучший подарок для нас! 💝</p>
+        </div>
+        <div class="section-photo"><img src="photo-block8-after.JPG" alt="Фото"></div>
 
-    const days=Math.floor(diff/(1000*60*60*24));
-    const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-    const minutes=Math.floor((diff%(1000*60*60))/(1000*60));
-    const seconds=Math.floor((diff%(1000*60))/1000);
+        <!-- === Блок 9: Подтверждение === -->
+        <div class="section-block" id="section9">
+            <h2>ПОДТВЕРЖДЕНИЕ ПРИСУТСТВИЯ</h2>
+            <p>Подтвердите участие до 01.08.2026</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSekuvQgzynyTia3MwOIxE5BPw72yhzzQ81dou_GtsFi4wajoA/viewform" target="_blank" class="music-toggle">Заполнить анкету</a>
+        </div>
+        <div class="section-photo"><img src="photo-block9-after.JPG" alt="Фото"></div>
 
-    document.getElementById('days').textContent=days;
-    document.getElementById('hours').textContent=hours.toString().padStart(2,'0');
-    document.getElementById('minutes').textContent=minutes.toString().padStart(2,'0');
-    document.getElementById('seconds').textContent=seconds.toString().padStart(2,'0');
-}
-setInterval(updateCountdown,1000);
-updateCountdown();
+        <!-- === Блок 10: Контакты === -->
+        <div class="section-block" id="section10">
+            <h2>КОНТАКТЫ</h2>
+            <p>Константин: +7 (989) 708-86-94</p>
+            <p>Алёна: +7 (903) 404-95-12</p>
+        </div>
+        <div class="section-photo"><img src="photo-block10-after.JPG" alt="Фото"></div>
 
-</script>
+        <div class="footer">С любовью для наших гостей</div>
+
+        <!-- Музыка -->
+        <audio loop id="bgMusic" volume="0.5">
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+        <button class="music-toggle" onclick="toggleMusic()">🔊</button>
+    </div>
+
+    <script>
+        function openInvitation(){
+            const screen = document.getElementById('invitationScreen');
+            const main = document.getElementById('mainContent');
+            const audio = document.getElementById('bgMusic');
+
+            screen.style.transform = 'translateY(-100%)';
+            screen.style.opacity = '0';
+            setTimeout(()=>{
+                main.classList.add('show');
+                document.body.style.overflow='auto';
+                activateAnimations();
+                audio.play().catch(()=>{});
+            },800);
+            setTimeout(()=>{screen.style.display='none';},1500);
+        }
+
+        function activateAnimations(){
+            const sections = document.querySelectorAll('.section-block, .section-photo, .footer');
+            const observer = new IntersectionObserver((entries)=>{
+                entries.forEach(entry=>{
+                    if(entry.isIntersecting) entry.target.classList.add('section-visible');
+                });
+            },{threshold:0.1});
+            sections.forEach(s=>observer.observe(s));
+        }
+
+        function toggleMusic(){
+            const audio = document.getElementById('bgMusic');
+            if(audio.paused){ audio.play(); } else { audio.pause(); }
+        }
+
+        function updateCountdown(){
+            const wedding = new Date('2026-08-08T18:00:00');
+            const now = new Date();
+            const diff = wedding - now;
+            const days = Math.floor(diff/(1000*60*60*24));
+            const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+            const minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+            const seconds = Math.floor((diff%(1000*60))/1000);
+            document.getElementById('days').textContent=days;
+            document.getElementById('hours').textContent=hours.toString().padStart(2,'0');
+            document.getElementById('minutes').textContent=minutes.toString().padStart(2,'0');
+            document.getElementById('seconds').textContent=seconds.toString().padStart(2,'0');
+        }
+
+        setInterval(updateCountdown,1000);
+        updateCountdown();
+
+        document.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ') openInvitation();});
+        document.addEventListener('touchstart',()=>openInvitation(),{once:true});
+    </script>
 </body>
 </html>
