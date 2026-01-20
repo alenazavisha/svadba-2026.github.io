@@ -6,6 +6,7 @@
     <title>Константин и Алёна | 08.08.2026</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=EB+Garamond:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/futura-now-script');
         
         * {
             margin: 0;
@@ -28,7 +29,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('invitation-photo.JPG') center/cover no-repeat;
+            background: url('Фото 1.png') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -175,6 +176,13 @@
         .invitation-banner {
             max-width: 780px;
             margin: 50px auto 30px auto;
+            background: #8B907C;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            color: #FFFFFF;
         }
 
         .music-note {
@@ -234,8 +242,8 @@
         }
 
         .calendar-header {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4em;
+            font-family: 'Futura Now Script', sans-serif;
+            font-size: 2.2em;
             color: #FFFFFF;
             margin-bottom: 15px;
             font-weight: 500;
@@ -317,8 +325,8 @@
         }
 
         .location-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 0em; /* Скрываем смайлики */
+            margin-bottom: 0px;
             color: #FFFFFF;
         }
 
@@ -519,11 +527,6 @@
             margin-top: 20px;
             transition: all 0.3s ease;
             border: 1px solid #FFFFFF;
-        }
-
-        .telegram-btn::before {
-            content: "📸";
-            font-size: 1.2em;
         }
 
         .telegram-btn:hover {
@@ -733,7 +736,7 @@
         }
 
         .contact-icon {
-            font-size: 1.2em;
+            font-size: 0em; /* Скрываем смайлики */
         }
 
         .music-toggle {
@@ -805,7 +808,7 @@
             }
             
             .location-icon {
-                font-size: 2.5em;
+                font-size: 0em;
             }
             
             .timeline::before {
@@ -861,6 +864,10 @@
                 padding: 8px;
                 font-size: 0.9em;
             }
+            
+            .calendar-header {
+                font-size: 1.8em;
+            }
         }
 
         @media (max-width: 480px) {
@@ -871,6 +878,10 @@
             
             .timeline-content {
                 padding: 15px;
+            }
+            
+            .calendar-header {
+                font-size: 1.5em;
             }
         }
     </style>
@@ -978,7 +989,7 @@
             <div class="locations-container">
                 <!-- ЗАГС -->
                 <div class="location-card">
-                    <div class="location-icon">💒</div>
+                    <div class="location-icon"></div>
                     <h3>Роспись в ЗАГСе</h3>
                     <p class="location-address">
                         Отдел ЗАГС Администрации города Волгодонска<br>
@@ -998,7 +1009,7 @@
 
                 <!-- Ресторан -->
                 <div class="location-card">
-                    <div class="location-icon">🍽️</div>
+                    <div class="location-icon"></div>
                     <h3>Банкет в ресторане</h3>
                     <p class="location-address">
                         Ресторан "Старая Мельница"<br>
@@ -1044,7 +1055,7 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time">18:00</div>
+                    <div class="timeline-time">17:30</div>
                     <div class="timeline-content">
                         <h4>СБОР ГОСТЕЙ</h4>
                         <p>Встречаемся, знакомимся и настраиваемся на душевную свадьбу</p>
@@ -1052,15 +1063,7 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time">18:10</div>
-                    <div class="timeline-content">
-                        <h4>ЦЕРЕМОНИЯ</h4>
-                        <p>Вы станете свидетелями того, как мы скажем друг другу "да"</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">18:40</div>
+                    <div class="timeline-time">18:00</div>
                     <div class="timeline-content">
                         <h4>БАНКЕТ</h4>
                         <p>От души посмеёмся, повеселимся и сделаем этот вечер незабываемым</p>
@@ -1149,7 +1152,7 @@
                 <div class="title-divider"></div>
             </div>
             <div class="dresscode-block">
-                <p>Для нас главное - Ваше присутствие! Будьте в том, в чем чувствуете себя комфортно и красиво. Мы будем рады видеть Вас в любых нарядах! 💝</p>
+                <p>Для нас главное - Ваше присутствие! Будьте в том, в чем чувствуете себя комфортно и красиво. Мы будем рады видеть Вас в любых нарядах.</p>
             </div>
         </div>
 
@@ -1165,7 +1168,7 @@
                 <div class="title-divider"></div>
             </div>
             <div class="wishes-block">
-                <p>Ваше присутствие - лучший подарок для нас! 💝<br>Если хотите нас порадовать, мы будем благодарны конверту с вашими пожеланиями.</p>
+                <p>Ваше внимание и добрые слова для нас важнее всего. Если же вы пожелаете поддержать нас в начале нашего пути, мы с радостью примем денежный подарок.</p>
             </div>
         </div>
 
@@ -1181,7 +1184,7 @@
                 <div class="title-divider"></div>
             </div>
             <div class="confirmation-block">
-                <p>Пожалуйста, подтвердите свое присутствие до 01.08.2026 заполнив короткую анкету:</p>
+                <p>Пожалуйста, подтвердите свое присутствие до 01.06.2026 заполнив короткую анкету:</p>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSekuvQgzynyTia3MwOIxE5BPw72yhzzQ81dou_GtsFi4wajoA/viewform" class="confirmation-btn" target="_blank">
                     ЗАПОЛНИТЬ АНКЕТУ
                 </a>
@@ -1203,11 +1206,11 @@
                 <p>Остались вопросы? Всегда рады ответить:</p>
                 <div class="contacts-details">
                     <div class="contact-item">
-                        <span class="contact-icon">📱</span>
+                        <span class="contact-icon"></span>
                         <span>Константин: +7 (989) 708-86-94</span>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-icon">📱</span>
+                        <span class="contact-icon"></span>
                         <span>Алёна: +7 (903) 404-95-12</span>
                     </div>
                 </div>
